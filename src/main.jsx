@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 
+// eslint-disable-next-line no-unused-vars
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 
 // páginas
