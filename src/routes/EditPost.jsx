@@ -13,17 +13,17 @@ const EditPost = () => {
     const { id } = useParams()
 
     const getPost = async() => {
-        try {
-            const response = await blogFetch.get(`/posts/${id}`)
+      try {
+          const response = await blogFetch.get(`/posts/${id}`)
 
-            const data = response.data
+          const data = response.data
 
-            setTitle(data.title)
-            setBody(data.body)
+          setTitle(data.title)
+          setBody(data.body)
 
-        } catch (error) {
-            console.log(error)
-        }
+      } catch (error) {
+          console.log(error)
+      }
     }
 
     const editPost = async(e) => {
@@ -33,44 +33,44 @@ const EditPost = () => {
         
         await blogFetch.put(`/posts/${id}`, {
             body: post,
-        })
+        }) 
         navigate("/")
-
     }
 
     useEffect(() => {
-        getPost()
-    },[])
+        getPost();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
-  return (
-    <div className="edit-post">
-      <h2>Editando: {title}</h2>
-      <form onSubmit={(e) => editPost(e)}>
-        <div className="form-control">
-          <label htmlFor="title">Título</label>
-          <input 
-            type="text" 
-            name="title" 
-            id= "title" 
-            placeholder="Digite o título"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title || ""}
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="body">Conteúdo</label>
-          <textarea 
-            name="body" 
-            id= "body" 
-            placeholder="Digite o conteúdo"
-            onChange={(e) => setBody(e.target.value)}
-            value={body || ""}
-          />
-        </div>
-        <input type="submit" value="Editar Post" className="btn" />
-      </form>
-    </div>
-  )
+    return (
+      <div className="edit-post">
+        <h2>Editando: {title}</h2>
+        <form onSubmit={(e) => editPost(e)}>
+          <div className="form-control">
+            <label htmlFor="title">Título</label>
+            <input 
+              type="text" 
+              name="title" 
+              id= "title" 
+              placeholder="Digite o título"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title || ""}
+            />
+          </div>
+          <div className="form-control">
+            <label htmlFor="body">Conteúdo</label>
+            <textarea 
+              name="body" 
+              id= "body" 
+              placeholder="Digite o conteúdo"
+              onChange={(e) => setBody(e.target.value)}
+              value={body || ""}
+            />
+          </div>
+          <input type="submit" value="Editar Post" className="btn" />
+        </form>
+      </div>
+    )
 }
 
 export default EditPost

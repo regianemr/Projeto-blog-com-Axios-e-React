@@ -23,7 +23,6 @@ const NewPost = () => {
     navigate("/")
   }
 
-
   return (
     <div className="new-post">
       <h2>Inserir novo Post:</h2>
